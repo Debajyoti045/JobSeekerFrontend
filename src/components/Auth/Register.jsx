@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import { FaRegUser } from "react-icons/fa";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { RiLock2Fill } from "react-icons/ri";
 import { FaPencilAlt } from "react-icons/fa";
@@ -14,7 +13,7 @@ const Register = () => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("");
+  const [role, setRole] = useState("Job Seeker");
 
   const { isAuthorized, setIsAuthorized, user, setUser } = useContext(Context);
 
@@ -58,22 +57,11 @@ const Register = () => {
           </div>
           <form>
             <div className="inputTag">
-              <label>Register As</label>
-              <div>
-                <select value={role} onChange={(e) => setRole(e.target.value)}>
-                  <option value="">Select Role</option>
-                  <option value="Employer">Employer</option>
-                  <option value="Job Seeker">Job Seeker</option>
-                </select>
-                <FaRegUser />
-              </div>
-            </div>
-            <div className="inputTag">
               <label>Name</label>
               <div>
                 <input
                   type="text"
-                  placeholder="Zeeshan"
+                  placeholder="Debajyoti"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
@@ -85,7 +73,7 @@ const Register = () => {
               <div>
                 <input
                   type="email"
-                  placeholder="zk@gmail.com"
+                  placeholder="Debaj@gmail.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -97,7 +85,7 @@ const Register = () => {
               <div>
                 <input
                   type="number"
-                  placeholder="12345678"
+                  placeholder="9004523456"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                 />

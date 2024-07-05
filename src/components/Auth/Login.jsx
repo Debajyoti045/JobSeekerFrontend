@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { RiLock2Fill } from "react-icons/ri";
 import { Link, Navigate } from "react-router-dom";
-import { FaRegUser } from "react-icons/fa";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Context } from "../../main";
@@ -10,7 +9,6 @@ import { Context } from "../../main";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("");
 
   const { isAuthorized, setIsAuthorized } = useContext(Context);
 
@@ -19,7 +17,7 @@ const Login = () => {
     try {
       const { data } = await axios.post(
         "http://localhost:4000/api/v1/user/login",
-        { email, password, role },
+        { email, password },
         {
           headers: {
             "Content-Type": "application/json",
@@ -30,7 +28,6 @@ const Login = () => {
       toast.success(data.message);
       setEmail("");
       setPassword("");
-      setRole("");
       setIsAuthorized(true);
     } catch (error) {
       toast.error(error.response.data.message);
@@ -51,22 +48,11 @@ const Login = () => {
           </div>
           <form>
             <div className="inputTag">
-              <label>Login As</label>
-              <div>
-                <select value={role} onChange={(e) => setRole(e.target.value)}>
-                  <option value="">Select Role</option>
-                  <option value="Employer">Employer</option>
-                  <option value="Job Seeker">Job Seeker</option>
-                </select>
-                <FaRegUser />
-              </div>
-            </div>
-            <div className="inputTag">
               <label>Email Address</label>
               <div>
                 <input
                   type="email"
-                  placeholder="zk@gmail.com"
+                  placeholder="Debaj@gmail.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
